@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @package   plg_radicalreviews_radicalmart
+  ~ @version   1.0.1
+  ~ @author    Dmitriy Vasyukov - https://fictionlabs.ru
+  ~ @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+  ~ @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+  ~ @link      https://fictionlabs.ru/
+  -->
+
+<form>
+    <fieldset name="radicalmart" label="COM_CONFIG_RADICALMART_FIELDSET_LABEL">
+        <field
+                name="radicalmart_display_type_stats"
+                type="list"
+                label="PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_TYPE_STATS"
+                size="1"
+                default="0">
+            <option value="0">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_NONE</option>
+            <option value="1">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_AFTER_TITLE</option>
+            <option value="2">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_AFTER_DISPLAY</option>
+            <option value="3">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_BEFORE_DISPLAY</option>
+        </field>
+
+        <field
+                name="radicalmart_display_type_reviews"
+                type="list"
+                label="PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_TYPE_REVIEWS"
+                size="1"
+                default="0">
+            <option value="0">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_NONE</option>
+            <option value="1">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_AFTER_TITLE</option>
+            <option value="2">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_AFTER_DISPLAY</option>
+            <option value="3">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_BEFORE_DISPLAY</option>
+        </field>
+
+        <field
+                name="radicalmart_display_reviews_limit"
+                type="number"
+                min="1"
+                showon="radicalmart_display_type_reviews!:0"
+                label="PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_REVIEWS_LIMIT"
+                default="10"
+        />
+
+    </fieldset>
+</form>

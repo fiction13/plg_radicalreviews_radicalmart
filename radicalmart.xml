@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @package   plg_radicalreviews_radicalmart
+  ~ @version   1.0.1
+  ~ @author    Dmitriy Vasyukov - https://fictionlabs.ru
+  ~ @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+  ~ @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+  ~ @link      https://fictionlabs.ru/
+  -->
+
+<extension version="4.2" type="plugin" group="radicalreviews" method="upgrade">
+	<name>PLG_RADICALREVIEWS_RADICALMART</name>
+	<creationDate>January 2023</creationDate>
+    <author>Dmitriy Vasyukov</author>
+    <copyright>Copyright (C) 2005 - 2022 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>info@fictionlabs.ru</authorEmail>
+    <authorUrl>https://fictionlabs.ru</authorUrl>
+    <version>1.0.1</version>
+    <description>PLG_RADICALREVIEWS_RADICALMART_DESCRIPTION</description>
+	<namespace path="src">Joomla\Plugin\RadicalReviews\RadicalMart</namespace>
+	<scriptfile>script.php</scriptfile>
+
+	<!-- Plugin languages -->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/plg_radicalreviews_radicalmart.ini</language>
+		<language tag="en-GB">en-GB/plg_radicalreviews_radicalmart.sys.ini</language>
+		<language tag="ru-RU">ru-RU/plg_radicalreviews_radicalmart.ini</language>
+		<language tag="ru-RU">ru-RU/plg_radicalreviews_radicalmart.sys.ini</language>
+	</languages>
+
+	<!-- Plugin files -->
+	<files>
+		<folder plugin="radicalmart">src</folder>
+		<folder>forms</folder>
+		<folder>services</folder>
+	</files>
+
+	<!-- Plugin layouts -->
+	<layouts destination="plugins/radicalreviews/radicalmart" folder="layouts">
+		<folder>product</folder>
+	</layouts>
+</extension>
