@@ -1,12 +1,12 @@
 <?php
 
 /*
- * @package   plg_radicalreviews_radicalmart
- * @version   __DEPLOY_VERSION__
- * @author    Dmitriy Vasyukov - https://fictionlabs.ru
- * @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+ * @package   RadicalReviews - RadicalMart
+ * @version   1.0.1
+ * @author    Delo Design
+ * @copyright Copyright (c) 2023 Delo Design. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
- * @link      https://fictionlabs.ru/
+ * @link      https://delo-design.ru
  */
 
 defined('_JEXEC') or die;
@@ -25,7 +25,7 @@ return new class implements ServiceProviderInterface {
 	 *
 	 * @param   Container  $container  The DI container.
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	public function register(Container $container)
 	{

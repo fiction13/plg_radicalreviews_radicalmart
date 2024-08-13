@@ -1,11 +1,11 @@
 <?php
 /*
- * @package   plg_radicalreviews_radicalmart
- * @version   __DEPLOY_VERSION__
- * @author    Dmitriy Vasyukov - https://fictionlabs.ru
- * @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+ * @package   RadicalReviews - RadicalMart
+ * @version   1.0.1
+ * @author    Delo Design
+ * @copyright Copyright (c) 2023 Delo Design. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
- * @link      https://fictionlabs.ru/
+ * @link      https://delo-design.ru
  */
 
 namespace Joomla\Plugin\RadicalReviews\RadicalMart\Extension;
@@ -30,7 +30,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @var    bool
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.1
 	 */
 	protected $autoloadLanguage = true;
 
@@ -39,7 +39,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @var  \Joomla\CMS\Application\CMSApplication
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.1
 	 */
 	protected $app = null;
 
@@ -48,7 +48,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @var  \Joomla\Database\DatabaseDriver
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.1
 	 */
 	protected $db = null;
 
@@ -57,14 +57,14 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @var  Registry|null
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.1
 	 */
 	protected ?Registry $componentParams = null;
 
 	/**
 	 * @var string[]
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	private const CONTEXTS_MAP = [
 		'com_radicalmart.product' => [
@@ -78,7 +78,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @return  array
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	public static function getSubscribedEvents(): array
 	{
@@ -99,7 +99,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 * @param   DispatcherInterface  &$subject  The object to observe.
 	 * @param   array                 $config   An optional associative array of configuration settings.
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.1
 	 */
 	public function __construct(&$subject, $config = [])
 	{
@@ -109,24 +109,23 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	}
 
 	/**
-	 * Method to change forms.
+	 * Method to get review object.
 	 *
-	 * @param   Event  $event  The event.
+	 * @param   int     $id       Item id
+	 * @param   string  $context  Item context
 	 *
 	 * @throws  \Exception
 	 *
-	 * @since  0.0.0
+	 * @since  1.0.0
 	 */
-	public function onRadicalReviewsGetObject(Event $event)
+	public function onRadicalReviewsGetObject(int $id, string $context)
 	{
-		$context = $event->getArgument('context');
-		$id      = $event->getArgument('item_id');
-		$object  = RadicalMartHelper::getObject($id, $context);
-
-		if ($object)
+		if ($context !== 'com_radicalmart.product')
 		{
-			$event->setArgument('result', $object);
+			return false;
 		}
+
+		return RadicalMartHelper::getObject($id, $context);
 	}
 
 	/**
@@ -137,7 +136,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 * @param   Registry   $params      The params
 	 * @param   integer    $limitstart  The start
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	public function onContentAfterTitle(Event $event)
 	{
@@ -161,7 +160,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @return  string
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	public function onContentBeforeDisplay(Event $event)
 	{
@@ -185,7 +184,7 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @return  string
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	public function onContentAfterDisplay(Event $event)
 	{
@@ -209,35 +208,34 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	 *
 	 * @return  string
 	 *
-	 * @since   0.0.0
+	 * @since   1.0.1
 	 */
 	private function display($context, $item, $params, $displayType)
 	{
-		if ($this->app->isClient('site') && $context === 'com_radicalmart.product'
-			&& $this->app->input->get('option') === 'com_radicalmart'
-			&& $this->app->input->get('view') === 'product'
-			&& $this->app->input->get('id') == $item->id)
+		if ($this->app->isClient('site')
+			&& strpos($context, 'radicalmart') !== false
+			&& $this->app->input->get('option') === 'com_radicalmart')
 		{
 			$result                   = array();
-			$item_id                  = $this->app->input->get('id');
 			$paramsDisplayTypeStats   = (int) $this->componentParams->get('radicalmart_display_type_stats');
 			$paramsDisplayTypeReviews = (int) $this->componentParams->get('radicalmart_display_type_reviews');
 
 			// Display stats
 			if ($displayType === $paramsDisplayTypeStats)
 			{
-				$result[] = ReviewsHelper::renderStats($item_id, $context);
+				$result[] = ReviewsHelper::renderStats($item->id, $context);
 			}
 
 			// Display reviews
 			if ($displayType === $paramsDisplayTypeReviews)
 			{
 				$limit    = (int) $this->componentParams->get('radicalmart_display_reviews_limit', 10);
-				$result[] = ReviewsHelper::renderReviews($item_id, $context, $limit);
+				$result[] = ReviewsHelper::renderReviews($item->id, $context, $limit);
 			}
 
 			return implode("\n", $result);
 		}
 
+		return '';
 	}
 }

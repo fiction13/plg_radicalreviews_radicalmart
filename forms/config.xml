@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ @package   plg_radicalreviews_radicalmart
-  ~ @version   __DEPLOY_VERSION__
-  ~ @author    Dmitriy Vasyukov - https://fictionlabs.ru
-  ~ @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+  ~ @package   RadicalReviews - RadicalMart
+  ~ @version   1.0.1
+  ~ @author    Delo Design
+  ~ @copyright Copyright (c) 2023 Delo Design. All rights reserved.
   ~ @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
-  ~ @link      https://fictionlabs.ru/
+  ~ @link      https://delo-design.ru
   -->
 
 <form>
@@ -15,6 +15,7 @@
                 type="list"
                 label="PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_TYPE_STATS"
                 size="1"
+                layout="joomla.form.field.list-fancy-select"
                 default="0">
             <option value="0">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_NONE</option>
             <option value="1">PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_AFTER_TITLE</option>
@@ -25,6 +26,7 @@
         <field
                 name="radicalmart_display_type_reviews"
                 type="list"
+                layout="joomla.form.field.list-fancy-select"
                 label="PLG_RADICALREVIEWS_RADICALMART_PARAM_DISPLAY_TYPE_REVIEWS"
                 size="1"
                 default="0">

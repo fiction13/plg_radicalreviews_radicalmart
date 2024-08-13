@@ -1,11 +1,11 @@
 <?php
 /*
- * @package   plg_radicalreviews_radicalmart
- * @version   __DEPLOY_VERSION__
- * @author    Dmitriy Vasyukov - https://fictionlabs.ru
- * @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+ * @package   RadicalReviews - RadicalMart
+ * @version   1.0.1
+ * @author    Delo Design
+ * @copyright Copyright (c) 2023 Delo Design. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
- * @link      https://fictionlabs.ru/
+ * @link      https://delo-design.ru
  */
 
 namespace Joomla\Plugin\RadicalReviews\RadicalMart\Helper;
@@ -19,28 +19,28 @@ use Joomla\CMS\Factory;
 /**
  * @package     Helper class
  *
- * @since       0.0.0
+ * @since       1.0.1
  */
 class RadicalMartHelper
 {
 	/**
 	 * @var Registry
 	 *
-	 * @since 0.0.0
+	 * @since 1.0.1
 	 */
 	protected $params;
 
 	/**
 	 * @var Input
 	 *
-	 * @since 0.0.0
+	 * @since 1.0.1
 	 */
 	protected $input;
 
 	/**
 	 * @var array
 	 *
-	 * @since 0.0.0
+	 * @since 1.0.1
 	 */
 	protected static $_contexts = [
 		'com_radicalmart.product' => 'Product',
@@ -51,7 +51,7 @@ class RadicalMartHelper
 	/**
 	 * @param   Registry  $params
 	 *
-	 * @since 0.0.0
+	 * @since 1.0.1
 	 */
 	public function __construct(Registry $params)
 	{
@@ -65,7 +65,7 @@ class RadicalMartHelper
 	 * @param $item_id  int    Item id.
 	 * @param $context  string Context.
 	 *
-	 * @since 0.0.0
+	 * @since 1.0.1
 	 */
 	public static function getObject($item_id = null, $context = 'com_radicalmart.product')
 	{

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ @package   plg_radicalreviews_radicalmart
-  ~ @version   __DEPLOY_VERSION__
-  ~ @author    Dmitriy Vasyukov - https://fictionlabs.ru
-  ~ @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
+  ~ @package   RadicalReviews - RadicalMart
+  ~ @version   1.0.1
+  ~ @author    Delo Design
+  ~ @copyright Copyright (c) 2023 Delo Design. All rights reserved.
   ~ @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
-  ~ @link      https://fictionlabs.ru/
+  ~ @link      https://delo-design.ru
   -->
 
 <extension version="4.2" type="plugin" group="radicalreviews" method="upgrade">
 	<name>PLG_RADICALREVIEWS_RADICALMART</name>
-	<creationDate>January 2023</creationDate>
+	<creationDate>April 2023</creationDate>
     <author>Dmitriy Vasyukov</author>
     <copyright>Copyright (C) 2005 - 2022 Open Source Matters. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>info@fictionlabs.ru</authorEmail>
     <authorUrl>https://fictionlabs.ru</authorUrl>
-    <version>1.0.2-dev</version>
+    <version>1.0.1</version>
     <description>PLG_RADICALREVIEWS_RADICALMART_DESCRIPTION</description>
 	<namespace path="src">Joomla\Plugin\RadicalReviews\RadicalMart</namespace>
 	<scriptfile>script.php</scriptfile>
