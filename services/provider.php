@@ -2,7 +2,7 @@
 
 /*
  * @package   RadicalReviews - RadicalMart
- * @version   1.0.1
+ * @version   __DEPLOY_VERSION__
  * @author    Delo Design
  * @copyright Copyright (c) 2023 Delo Design. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html

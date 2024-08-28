@@ -1,7 +1,7 @@
 <?php
 /*
  * @package   RadicalReviews - RadicalMart
- * @version   1.0.1
+ * @version   __DEPLOY_VERSION__
  * @author    Delo Design
  * @copyright Copyright (c) 2023 Delo Design. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
@@ -11,7 +11,6 @@
 namespace Joomla\Plugin\RadicalReviews\RadicalMart\Extension;
 
 use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Form\Form;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Component\RadicalReviews\Administrator\Traits\PluginTrait;
 use Joomla\Component\RadicalReviews\Site\Helper\ReviewsHelper;
@@ -83,13 +82,13 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	public static function getSubscribedEvents(): array
 	{
 		return [
-//			'onRadicalReviewsAdminForm'  => 'onRadicalReviewsAdminForm',
-			'onRadicalReviewsConfigForm'  => 'onRadicalReviewsConfigForm',
-			'onRadicalReviewsGetObject'   => 'onRadicalReviewsGetObject',
-			'onRadicalReviewsGetContexts' => 'onRadicalReviewsGetContexts',
-			'onContentAfterTitle'         => 'onContentAfterTitle',
-			'onContentBeforeDisplay'      => 'onContentBeforeDisplay',
-			'onContentAfterDisplay'       => 'onContentAfterDisplay'
+			'onRadicalReviewsConfigForm'      => 'onRadicalReviewsConfigForm',
+			'onRadicalReviewsGetObject'       => 'onRadicalReviewsGetObject',
+			'onRadicalReviewsGetContexts'     => 'onRadicalReviewsGetContexts',
+			'onContentAfterTitle'             => 'onContentAfterTitle',
+			'onContentBeforeDisplay'          => 'onContentBeforeDisplay',
+			'onContentAfterDisplay'           => 'onContentAfterDisplay',
+			'onRadicalReviewsGetReviewsGroup' => 'onRadicalReviewsGetReviewsGroup'
 		];
 	}
 
@@ -237,5 +236,26 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 		}
 
 		return '';
+	}
+
+	/**
+	 * Performs the display event.
+	 *
+	 * @param   int  $item_id  The id of the object.
+	 * @param   int  $context  The name of context.
+	 *
+	 * @return int[]|false Reviews group items ids or false.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function onRadicalReviewsGetReviewsGroup(int $item_id, string $context)
+	{
+		if ($this->app->isClient('site')
+			&& strpos($context, 'radicalmart') !== false)
+		{
+			return RadicalMartHelper::getGroup($item_id);
+		}
+
+		return false;
 	}
 }
