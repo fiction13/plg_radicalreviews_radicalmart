@@ -130,14 +130,11 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	/**
 	 * The display event.
 	 *
-	 * @param   string     $context     The context
-	 * @param   \stdClass  $item        The item
-	 * @param   Registry   $params      The params
-	 * @param   integer    $limitstart  The start
+	 * @param   mixed  $event  Event
 	 *
 	 * @since   1.0.1
 	 */
-	public function onContentAfterTitle(Event $event)
+	public function onContentAfterTitle($event)
 	{
 		$context = $event->getArgument(0);
 		$item    = $event->getArgument(1);
@@ -152,16 +149,13 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	/**
 	 * The display event.
 	 *
-	 * @param   string     $context     The context
-	 * @param   \stdClass  $item        The item
-	 * @param   Registry   $params      The params
-	 * @param   integer    $limitstart  The start
+	 * @param   mixed  $event  Event
 	 *
 	 * @return  string
 	 *
 	 * @since   1.0.1
 	 */
-	public function onContentBeforeDisplay(Event $event)
+	public function onContentBeforeDisplay($event)
 	{
 		$context = $event->getArgument(0);
 		$item    = $event->getArgument(1);
@@ -176,16 +170,13 @@ class RadicalMart extends CMSPlugin implements SubscriberInterface
 	/**
 	 * The display event.
 	 *
-	 * @param   string     $context     The context
-	 * @param   \stdClass  $item        The item
-	 * @param   Registry   $params      The params
-	 * @param   integer    $limitstart  The start
+	 * @param   mixed  $event  Event
 	 *
 	 * @return  string
 	 *
 	 * @since   1.0.1
 	 */
-	public function onContentAfterDisplay(Event $event)
+	public function onContentAfterDisplay($event)
 	{
 		$context = $event->getArgument(0);
 		$item    = $event->getArgument(1);
